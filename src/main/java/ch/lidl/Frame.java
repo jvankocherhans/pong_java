@@ -6,20 +6,21 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class GameFrame extends JFrame {
+public class Frame extends JFrame {
     
     private GamePanel gamePanel;
 
-    public GameFrame() {
+    public Frame() {
         gamePanel = new GamePanel();
+        MenuPanel m = new MenuPanel();
 
-        this.add(gamePanel);
+        this.add(m);
         this.setTitle("Pong");
         this.setResizable(false);
         this.setBackground(Color.BLACK);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.pack();
         this.setVisible(true);
-        this.setLocation(null);
+        
     }
 }

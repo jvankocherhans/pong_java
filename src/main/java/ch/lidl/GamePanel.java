@@ -8,9 +8,9 @@ import java.awt.event.*;
 
 public class GamePanel extends JPanel implements Runnable{
     
-    static private final int GAME_WIDTH = 1000;
-    static private final int GAME_HEIGHT = (int) (1000 * (0.55555));
-    static private Dimension SCREEN_SIZE = new Dimension(GAME_WIDTH, GAME_HEIGHT);
+    static private final int GAME_WIDTH = PanelContainer.PANEL_WIDTH;
+    static private final int GAME_HEIGHT = PanelContainer.PANEL_HEIGHT;
+    static private Dimension SCREEN_SIZE = PanelContainer.SCREEN_SIZE;
     static private final int PADDLE_HEIGHT = 100;
     static private final int PADDLE_WIDTH = 25;
     static private final int BALL_DIAMETER = 20;
