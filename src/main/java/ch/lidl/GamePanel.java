@@ -89,10 +89,15 @@ public class GamePanel extends JPanel implements Runnable{
             gameHUD.playerscore++;
         }
 
-        // Ball out of bound
+        // Ball out of bound / Game Over
 
         if(ball.x <= 0){
-            newBall();
+            Frame frame = Frame.getInstance();
+            frame.remove(this);
+            frame.add(PanelContainer.getRestartMenuPanelInstance(this.playerName));
+            frame.repaint();
+            frame.validate();
+            this.gameThread.stop();
         }
     }
 
