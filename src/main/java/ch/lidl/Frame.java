@@ -8,9 +8,11 @@ import java.awt.event.*;
 
 public class Frame extends JFrame {
     
+    public static Frame frame;
+
     private GamePanel gamePanel;
 
-    public Frame() {
+    private Frame() {
         gamePanel = new GamePanel();
         MenuPanel m = new MenuPanel();
 
@@ -21,6 +23,16 @@ public class Frame extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.pack();
         this.setVisible(true);
-        
+    }
+
+    public static Frame getInstance() {
+        if(frame == null) {
+            frame = new Frame();
+        }
+        return frame;
+    }
+
+    public static void exit() {
+        frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
     }
 }

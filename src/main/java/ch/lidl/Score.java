@@ -18,7 +18,7 @@ public class Score {
 
     public void draw(Graphics g) {
         g.setColor(Color.WHITE);
-        g.setFont(new Font("Monospaced", Font.PLAIN, 30));
+        g.setFont(new Font("Consolas", Font.PLAIN, 30));
         g.drawString(String.valueOf("Score: " + this.playerscore), GAME_WIDTH -180, 50);
     }
 }

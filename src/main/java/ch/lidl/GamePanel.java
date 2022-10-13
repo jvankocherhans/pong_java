@@ -29,7 +29,6 @@ public class GamePanel extends JPanel implements Runnable{
         this.setFocusable(true);
         this.addKeyListener(new ActionListener());
         this.setPreferredSize(this.SCREEN_SIZE);
-
         gameThread = new Thread(this);
         gameThread.start();
     }

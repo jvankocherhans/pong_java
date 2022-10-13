@@ -13,4 +13,11 @@ public class PanelContainer extends JPanel {
     static public final int PANEL_HEIGHT = (int) (1000 * (0.55555));
     static public Dimension SCREEN_SIZE = new Dimension(PANEL_WIDTH, PANEL_HEIGHT);
 
+    public static GamePanel getGamePanelInstance() {
+        return new GamePanel();
+    }
+
+    public static InputPlayerNamePanel getInputPlayerNamePanelInstance() {
+        return new InputPlayerNamePanel();
+    }
 }

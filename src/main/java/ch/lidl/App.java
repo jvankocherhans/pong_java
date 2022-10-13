@@ -1,9 +1,11 @@
 package ch.lidl;
 
+import java.security.Key;
+
 public class App {
     public static void main(String[] args) {
 
-        Frame gameFrame = new Frame();
+        Frame frame = Frame.getInstance();
         
     }
 
