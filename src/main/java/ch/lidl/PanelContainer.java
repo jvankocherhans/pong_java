@@ -13,6 +13,10 @@ public class PanelContainer extends JPanel {
     static public final int PANEL_HEIGHT = (int) (1000 * (0.55555));
     static public Dimension SCREEN_SIZE = new Dimension(PANEL_WIDTH, PANEL_HEIGHT);
 
+    public static MenuPanel getMenuPanelInstance() {
+        return new MenuPanel();
+    }
+
     public static GamePanel getGamePanelInstance(String playerName) {
         return new GamePanel(playerName);
     }
@@ -21,7 +25,7 @@ public class PanelContainer extends JPanel {
         return new InputPlayerNamePanel();
     }
 
-    public static RestartMenu gRestartMenuInstance() {
+    public static RestartMenu getRestartMenuInstance() {
         return new RestartMenu();
     }
 }

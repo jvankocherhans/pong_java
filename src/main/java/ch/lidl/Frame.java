@@ -15,7 +15,7 @@ public class Frame extends JFrame {
     private Frame() {
         MenuPanel m = new MenuPanel();
 
-        this.add(PanelContainer.gRestartMenuInstance());
+        this.add(PanelContainer.getRestartMenuInstance());
         this.setTitle("Pong");
         this.setResizable(false);
         this.setBackground(Color.BLACK);
