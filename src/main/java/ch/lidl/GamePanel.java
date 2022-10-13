@@ -20,12 +20,14 @@ public class GamePanel extends JPanel implements Runnable{
     Graphics graphics;
     Paddle paddle;
     Ball ball;
-    Score score;
+    GameHUD gameHUD;
+    private String playerName; 
 
-    public GamePanel() {
+    public GamePanel(String playerName) {
         newPaddle();
         newBall();
-        score = new Score(GAME_WIDTH, GAME_WIDTH);
+        this.playerName = playerName;
+        gameHUD = new GameHUD(GAME_WIDTH, GAME_HEIGHT, this.playerName);
         this.setFocusable(true);
         this.addKeyListener(new ActionListener());
         this.setPreferredSize(this.SCREEN_SIZE);
@@ -51,7 +53,7 @@ public class GamePanel extends JPanel implements Runnable{
     public void draw(Graphics g) {
         this.paddle.draw(g);
         this.ball.draw(g);
-        this.score.draw(g);
+        this.gameHUD.draw(g);
         Toolkit.getDefaultToolkit().sync();
     }
     
@@ -67,7 +69,6 @@ public class GamePanel extends JPanel implements Runnable{
         }
         if(paddle.y >= GAME_HEIGHT - PADDLE_HEIGHT){
             paddle.y = GAME_HEIGHT - PADDLE_HEIGHT;
-
         }
 
         // Ballcollisions
@@ -85,7 +86,7 @@ public class GamePanel extends JPanel implements Runnable{
         if(ball.intersects(paddle)){
             ball.setXDirection(-ball.xVelocity);
             ball.speed++;
-            score.playerscore++;
+            gameHUD.playerscore++;
         }
 
         // Ball out of bound
@@ -110,6 +111,7 @@ public class GamePanel extends JPanel implements Runnable{
                 checkCollisions();
                 repaint();
                 delta--;
+                System.out.println(this.playerName);
             }
         }
     }

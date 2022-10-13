@@ -13,10 +13,9 @@ public class Frame extends JFrame {
     private GamePanel gamePanel;
 
     private Frame() {
-        gamePanel = new GamePanel();
         MenuPanel m = new MenuPanel();
 
-        this.add(m);
+        this.add(PanelContainer.gRestartMenuInstance());
         this.setTitle("Pong");
         this.setResizable(false);
         this.setBackground(Color.BLACK);
@@ -35,4 +34,5 @@ public class Frame extends JFrame {
     public static void exit() {
         frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
     }
+
 }
