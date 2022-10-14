@@ -47,8 +47,8 @@ JButton creditsBtn = new JButton();
     this.startGameBtn.setBounds(PanelContainer.PANEL_WIDTH / 2 - BTN_WIDTH  /2, 300, BTN_WIDTH, BTN_HEIGHT);
     this.startGameBtn.addActionListener(this);
     this.startGameBtn.setText("Start Game");
-    this.startGameBtn.setBackground(Color.WHITE);
-    this.startGameBtn.setForeground(Color.BLACK);
+    this.startGameBtn.setBackground(Color.BLACK);
+    this.startGameBtn.setForeground(Color.WHITE);
     this.startGameBtn.setFont(new Font("Consolas", Font.PLAIN, 20));
     this.startGameBtn.setVerticalAlignment(SwingConstants.CENTER);
     this.startGameBtn.setHorizontalAlignment(SwingConstants.CENTER);
@@ -58,8 +58,8 @@ JButton creditsBtn = new JButton();
     this.scoreBoardBtn.setBounds(PanelContainer.PANEL_WIDTH / 2 - BTN_WIDTH  /2, 300 + BTN_HEIGHT + 10, BTN_WIDTH, BTN_HEIGHT);
     this.scoreBoardBtn.addActionListener(this);
     this.scoreBoardBtn.setText("Scoreboard"); 
-    this.scoreBoardBtn.setBackground(Color.WHITE);
-    this.scoreBoardBtn.setForeground(Color.BLACK);
+    this.scoreBoardBtn.setBackground(Color.BLACK);
+    this.scoreBoardBtn.setForeground(Color.WHITE);
     this.scoreBoardBtn.setFont(new Font("Consolas", Font.PLAIN, 20));
     this.scoreBoardBtn.setVerticalAlignment(SwingConstants.CENTER);
     this.scoreBoardBtn.setHorizontalAlignment(SwingConstants.CENTER);
@@ -69,8 +69,8 @@ JButton creditsBtn = new JButton();
     this.creditsBtn.setBounds(PanelContainer.PANEL_WIDTH / 2 - BTN_WIDTH  /2, 300 + (BTN_HEIGHT * 2) + 20, BTN_WIDTH, BTN_HEIGHT);
     this.creditsBtn.addActionListener(this);
     this.creditsBtn.setText("Credits"); 
-    this.creditsBtn.setBackground(Color.WHITE);
-    this.creditsBtn.setForeground(Color.BLACK);
+    this.creditsBtn.setBackground(Color.BLACK);
+    this.creditsBtn.setForeground(Color.WHITE);
     this.creditsBtn.setFont(new Font("Consolas", Font.PLAIN, 20));
     this.creditsBtn.setVerticalAlignment(SwingConstants.CENTER);
     this.creditsBtn.setHorizontalAlignment(SwingConstants.CENTER);
@@ -80,8 +80,8 @@ JButton creditsBtn = new JButton();
     this.exitBtn .setBounds(PanelContainer.PANEL_WIDTH / 2 - BTN_WIDTH  /2, 300 + (BTN_HEIGHT * 3) + 30, BTN_WIDTH, BTN_HEIGHT);
     this.exitBtn.addActionListener(this);
     this.exitBtn.setText("Exit"); 
-    this.exitBtn.setBackground(Color.WHITE);
-    this.exitBtn.setForeground(Color.BLACK);
+    this.exitBtn.setBackground(Color.BLACK);
+    this.exitBtn.setForeground(Color.WHITE);
     this.exitBtn.setFont(new Font("Consolas", Font.PLAIN, 20));
     this.exitBtn.setVerticalAlignment(SwingConstants.CENTER);
     this.exitBtn.setHorizontalAlignment(SwingConstants.CENTER);
@@ -103,7 +103,11 @@ JButton creditsBtn = new JButton();
         }
         
         if(e.getSource() == scoreBoardBtn) {
-
+            Frame frame = Frame.getInstance();
+            frame.remove(this);
+            frame.add(PanelContainer.getScoreBoardPanelInstance());
+            frame.repaint();
+            frame.validate();
         }
 
         if(e.getSource() == creditsBtn) {

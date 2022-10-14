@@ -10,12 +10,25 @@ public class Ball extends Rectangle{
 
     public int xVelocity;
     public int yVelocity;
-    public int speed = 2;
+    Random rand;
+    private int speed = 1;
 
     public Ball(int x, int y, int width, int height) {
         super(x, y, width, height);
-        setXDirection(1 * speed);
-        setYDirection(-1 * speed);
+        rand = new Random();
+        
+        setXDirection(-1 * speed);
+
+        if(rand.nextInt(2) == 0) {
+            setYDirection(-1 * speed);    
+        } else {
+            setYDirection(1 * speed);
+        }
+    }
+
+    public void increaseSpeed() {
+        this.yVelocity++;
+        this.xVelocity++;
     }
 
     public void setYDirection(int xDirection) {

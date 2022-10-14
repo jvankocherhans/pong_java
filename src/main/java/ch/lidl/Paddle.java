@@ -5,6 +5,7 @@ import java.util.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import net.java.games.input.Component;
 
 public class Paddle extends Rectangle {
 
@@ -17,33 +18,21 @@ public class Paddle extends Rectangle {
         this.id = id;
     }
 
-    public void keyPressed(KeyEvent e) {
-        switch (id) {
-            case 1:
-                if (e.getKeyCode() == KeyEvent.VK_W) {
-                    setYDirection(-speed);
-                    move();
-                }
-
-                if (e.getKeyCode() == KeyEvent.VK_S) {
-                    setYDirection(speed);
-                    move();
-                }
+    public void controllerInput(Component.Identifier identifier, float data) {
+        if (identifier == Component.Identifier.Button._0 && data >= 0.5) {
+            setYDirection(-speed);
+            move();
+        } else if (identifier == Component.Identifier.Button._0){
+            setYDirection(0);
+            move(); 
         }
-    }
 
-    public void keyReleased(KeyEvent e) {
-        switch (id) {
-            case 1:
-                if (e.getKeyCode() == KeyEvent.VK_W) {
-                    setYDirection(0);
-                    move();
-                }
-
-                if (e.getKeyCode() == KeyEvent.VK_S) {
-                    setYDirection(0);
-                    move();
-                }
+        if(identifier == Component.Identifier.Button._2 && data >= 0.5) {
+            setYDirection(speed);
+            move();
+        } else if (identifier == Component.Identifier.Button._2) {
+            setYDirection(0);
+            move();
         }
     }
 
