@@ -20,23 +20,27 @@ public class Ball extends Rectangle{
         setXDirection(-1 * speed);
 
         if(rand.nextInt(2) == 0) {
-            setYDirection(-1 * speed);    
+            setYDirection(-1 * speed);   
         } else {
             setYDirection(1 * speed);
         }
     }
 
     public void increaseSpeed() {
-        this.yVelocity++;
+        if(yVelocity < 0) {
+            this.yVelocity--;
+        } else {
+            this.yVelocity++;
+        }
         this.xVelocity++;
     }
 
-    public void setYDirection(int xDirection) {
-        this.yVelocity = xDirection;
+    public void setYDirection(int yDirection) {
+        this.yVelocity = yDirection;
     }
 
-    public void setXDirection(int yDirection) {
-        this.xVelocity = yDirection;
+    public void setXDirection(int xDirection) {
+        this.xVelocity = xDirection;
     }
 
     public void move() {

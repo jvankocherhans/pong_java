@@ -19,6 +19,7 @@ public class PanelContainer extends JPanel {
     private static InputPlayerNamePanel inputPlayerNamePanel;
     private static RestartMenuPanel restartMenuPanel;
     private static ScoreBoardPanel scoreBoardPanel;
+    private static CreditsPanel creditsPanel;
 
     public static MenuPanel getMenuPanelInstance() {
         killPanels();
@@ -38,9 +39,9 @@ public class PanelContainer extends JPanel {
         return inputPlayerNamePanel;
     }
 
-    public static RestartMenuPanel getRestartMenuPanelInstance(String playerName) {
+    public static RestartMenuPanel getRestartMenuPanelInstance(String playerName, int playerScore) {
         killPanels();
-        restartMenuPanel = new RestartMenuPanel(playerName);
+        restartMenuPanel = new RestartMenuPanel(playerName, playerScore);
         return restartMenuPanel;
     }
 
@@ -50,11 +51,18 @@ public class PanelContainer extends JPanel {
         return scoreBoardPanel;
     }
 
+    public static CreditsPanel getCreditsPanelInstance() {
+        killPanels();
+        creditsPanel = new CreditsPanel();
+        return creditsPanel;
+    }
+
     private static void killPanels() {
         menuPanel = null;
         inputPlayerNamePanel = null;
         gamePanel = null;
         restartMenuPanel = null;
         scoreBoardPanel = null;
+        creditsPanel = null;
     }
 }

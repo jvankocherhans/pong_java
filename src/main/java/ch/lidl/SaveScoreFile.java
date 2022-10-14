@@ -55,8 +55,6 @@ public class SaveScoreFile {
             System.out.println(("Error reading file"));
         }
         catch (ClassNotFoundException e) {}
-        
-        System.out.println("getFileDate" + playerScoreCache.toString());
         return playerScoreCache;
     }
 

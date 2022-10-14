@@ -14,14 +14,14 @@ JButton retryBtn = new JButton();
 JButton returnBtn = new JButton();
 
 JLabel gameOverText = new JLabel();
-JLabel gameOverImg = new JLabel();
+JLabel scoreText = new JLabel();
 
-private final int BTN_WIDTH = 300;
-static final int BTN_HEIGHT = 50;
+private final int BTN_WIDTH = 420;
+static final int BTN_HEIGHT = 80;
 
 private String playerName; 
 
-    public RestartMenuPanel (String playerName) {
+    public RestartMenuPanel (String playerName, int playerScore) {
 
     this.playerName = playerName;
     
@@ -33,34 +33,41 @@ private String playerName;
     this.setBackground(Color.BLACK);   
 
     // Game Over Text
-    this.gameOverText.setText("U DED!");
+    this.gameOverText.setText("You failed " + playerName + "! ;(");
     this.gameOverText.setHorizontalAlignment(SwingConstants.CENTER);
     this.gameOverText.setVerticalAlignment(SwingConstants.CENTER);
     this.gameOverText.setForeground(Color.WHITE);
     this.gameOverText.setFont(new Font("Consolas", Font.PLAIN, 60));
-    this.gameOverText.setBounds(PanelContainer.PANEL_WIDTH / 2 - 250, 70, 500, 200);
+    this.gameOverText.setBounds(PanelContainer.PANEL_WIDTH / 2 - 400, 70, 800, 200);
     this.add(gameOverText);
 
-    this.setVisible(true);
+    // Score Text
+    this.scoreText.setText("Score : " + playerScore);
+    this.scoreText.setHorizontalAlignment(SwingConstants.CENTER);
+    this.scoreText.setVerticalAlignment(SwingConstants.CENTER);
+    this.scoreText.setForeground(Color.CYAN);
+    this.scoreText.setFont(new Font("Consolas", Font.PLAIN, 40));
+    this.scoreText.setBounds(PanelContainer.PANEL_WIDTH / 2 - 400, 250, 800, 200);
+    this.add(scoreText);
 
     // Restart Button
-    this.retryBtn.setBounds(PanelContainer.PANEL_WIDTH / 2 - BTN_WIDTH  /2, 300 + BTN_HEIGHT + 10, BTN_WIDTH, BTN_HEIGHT);
+    this.retryBtn.setBounds(PanelContainer.PANEL_WIDTH / 2 - BTN_WIDTH  /2, 400 + BTN_HEIGHT + 10, BTN_WIDTH, BTN_HEIGHT);
     this.retryBtn.addActionListener(this);
     this.retryBtn.setText("Retry"); 
     this.retryBtn.setBackground(Color.BLACK);
     this.retryBtn.setForeground(Color.WHITE);
-    this.retryBtn.setFont(new Font("Consolas", Font.PLAIN, 20));
+    this.retryBtn.setFont(new Font("Consolas", Font.PLAIN, 30));
     this.retryBtn.setVerticalAlignment(SwingConstants.CENTER);
     this.retryBtn.setHorizontalAlignment(SwingConstants.CENTER);
     this.add(retryBtn);
 
     // Return Button
-    this.returnBtn.setBounds(PanelContainer.PANEL_WIDTH / 2 - BTN_WIDTH  /2, 300 + (BTN_HEIGHT * 2) + 20, BTN_WIDTH, BTN_HEIGHT);
+    this.returnBtn.setBounds(PanelContainer.PANEL_WIDTH / 2 - BTN_WIDTH  /2, 400 + (BTN_HEIGHT * 2) + 20, BTN_WIDTH, BTN_HEIGHT);
     this.returnBtn.addActionListener(this);
     this.returnBtn.setText("Return To Menu"); 
     this.returnBtn.setBackground(Color.BLACK);
     this.returnBtn.setForeground(Color.WHITE);
-    this.returnBtn.setFont(new Font("Consolas", Font.PLAIN, 20));
+    this.returnBtn.setFont(new Font("Consolas", Font.PLAIN, 30));
     this.returnBtn.setVerticalAlignment(SwingConstants.CENTER);
     this.returnBtn.setHorizontalAlignment(SwingConstants.CENTER);
     this.add(returnBtn);

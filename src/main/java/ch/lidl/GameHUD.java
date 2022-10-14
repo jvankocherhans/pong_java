@@ -19,9 +19,13 @@ public class GameHUD {
     }
 
     public void draw(Graphics g) {
-        g.setColor(Color.WHITE);
+        g.setColor(Color.CYAN);
         g.setFont(new Font("Consolas", Font.PLAIN, 25));
-        g.drawString(String.valueOf("Score: " + this.playerscore), GAME_WIDTH -160, 50);
-        g.drawString(String.valueOf("user: " + this.playerName), 20, 50);
+        g.drawString(String.valueOf("score: " + this.playerscore), GAME_WIDTH -160, 50);
+        g.drawString(String.valueOf("user: " + this.playerName), 40, 50);
+        if (playerscore < 1) {
+            g.setColor(Color.YELLOW);
+            g.drawString(String.valueOf("Betätige X und B um den Spieler zu steuern!"), GAME_WIDTH / 4 + 80, GAME_HEIGHT / 2);
+        }
     }
 }

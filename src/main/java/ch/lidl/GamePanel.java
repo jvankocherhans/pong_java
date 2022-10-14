@@ -22,7 +22,7 @@ public class GamePanel extends JPanel implements Runnable {
     static private final int GAME_HEIGHT = PanelContainer.PANEL_HEIGHT;
     static private Dimension SCREEN_SIZE = PanelContainer.SCREEN_SIZE;
     static private final int PADDLE_HEIGHT = 120;
-    static private final int PADDLE_WIDTH = 17;
+    static private final int PADDLE_WIDTH = 18;
     static private final int BALL_DIAMETER = 20;
 
     Thread gameThread;
@@ -52,7 +52,7 @@ public class GamePanel extends JPanel implements Runnable {
         this.controller = getController(ControllerEnvironment.getDefaultEnvironment().getControllers());
         this.eventQueue = controller.getEventQueue();
         this.event = new Event();
-
+        
         gameThread = new Thread(this);
         gameThread.start();
     }
@@ -115,12 +115,10 @@ public class GamePanel extends JPanel implements Runnable {
         // Ball out of bound / Game Over
 
         if (ball.x <= 0) {
-            System.out.println(playerName);
-            System.out.println(gameHUD.playerscore);
             this.saveScoreFile.addPlayerScore(playerName, gameHUD.playerscore);
             Frame frame = Frame.getInstance();
             frame.remove(this);
-            frame.add(PanelContainer.getRestartMenuPanelInstance(this.playerName));
+            frame.add(PanelContainer.getRestartMenuPanelInstance(this.playerName, gameHUD.playerscore));
             frame.repaint();
             frame.validate();
             this.gameThread.stop();
