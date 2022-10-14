@@ -99,6 +99,8 @@ public class ScoreBoardPanel extends JPanel implements ActionListener {
         this.ranks[4].setBounds(PanelContainer.PANEL_WIDTH / 2 - 250, 580, 500, 200);
         this.add(ranks[4]);
 
+        displayPlayerScore();
+
         this.validate();
         this.repaint();
     }
@@ -109,13 +111,23 @@ public class ScoreBoardPanel extends JPanel implements ActionListener {
         for (int i = 0; i < 5; i++) {
             int index;
             int maxValue = (int) scores.values().toArray()[0];
+            String key = (String) scores.keySet().toArray()[0];
+            this.ranks[i].setText(key + ":" + maxValue);
 
-            for (int j = 0; i < scores.size(); i++) {
-                if ((int) scores.values().toArray()[0] > maxValue) {
+            for (int j = 0; j < scores.size(); j++) {
+                System.out.println(scores.toString());
+                System.out.println(i);
+                if ((int) scores.values().toArray()[j] > maxValue) {
                     index = j;
-                    maxValue = (int) scores.values().toArray()[0];
+                    maxValue = (int) scores.values().toArray()[j];
+                    key = (String) scores.keySet().toArray()[j];
+                    this.ranks[i].setText(key + ":" + maxValue);
                 }
             }
+            scores.remove(key);
+            System.out.println(scores.toString());
+            this.validate();
+            this.repaint();
         }
 
     }
