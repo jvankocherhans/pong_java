@@ -14,7 +14,7 @@ public class ScoreBoardPanel extends JPanel implements ActionListener {
 
     JButton returnBtn;
 
-    private final int BTN_WIDTH = 300;
+    private final int BTN_WIDTH = 400;
     static final int BTN_HEIGHT = 50;
 
     JLabel scoreBoardTitle;
@@ -33,12 +33,14 @@ public class ScoreBoardPanel extends JPanel implements ActionListener {
 
         // Return to Menu
         returnBtn = new JButton();
-        this.returnBtn.setBounds(50, 50, BTN_WIDTH, BTN_HEIGHT);
+        this.returnBtn.setBounds(50, 50, 100, 100);
         this.returnBtn.addActionListener(this);
-        this.returnBtn.setText("<- Return to menu");
+        this.returnBtn.setText("x");
         this.returnBtn.setBackground(Color.BLACK);
         this.returnBtn.setForeground(Color.WHITE);
-        this.returnBtn.setFont(new Font("Consolas", Font.PLAIN, 20));
+        this.returnBtn.setBorder(null);
+        this.returnBtn.setFocusPainted(false);
+        this.returnBtn.setFont(new Font("Consolas", Font.PLAIN, 50));
         this.returnBtn.setVerticalAlignment(SwingConstants.CENTER);
         this.returnBtn.setHorizontalAlignment(SwingConstants.CENTER);
         this.add(returnBtn);
@@ -108,6 +110,7 @@ public class ScoreBoardPanel extends JPanel implements ActionListener {
     private void displayPlayerScore() {
         HashMap<String, Integer> scores = saveScoreFile.getFileData();
 
+        if(scores.size() >= 5) {
         for (int i = 0; i < 5; i++) {
             int index;
             int maxValue = (int) scores.values().toArray()[0];
@@ -115,8 +118,6 @@ public class ScoreBoardPanel extends JPanel implements ActionListener {
             this.ranks[i].setText(key + ":" + maxValue);
 
             for (int j = 0; j < scores.size(); j++) {
-                System.out.println(scores.toString());
-                System.out.println(i);
                 if ((int) scores.values().toArray()[j] > maxValue) {
                     index = j;
                     maxValue = (int) scores.values().toArray()[j];
@@ -125,10 +126,10 @@ public class ScoreBoardPanel extends JPanel implements ActionListener {
                 }
             }
             scores.remove(key);
-            System.out.println(scores.toString());
             this.validate();
             this.repaint();
         }
+    }
 
     }
 
