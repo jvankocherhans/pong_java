@@ -1,18 +1,16 @@
 package ch.lidl;
 
 // Dependencies
-import java.util.*;
 import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.plaf.DimensionUIResource;
 
 import java.awt.*;
 import java.awt.event.*;
 
+// Membervraiblen
 public class MenuPanel extends JPanel implements ActionListener {
 
-JLabel menuTitle = new JLabel();
-Dimension menuTitleDimension = new Dimension(500, 500);
+private JLabel menuTitle = new JLabel();
+private Dimension menuTitleDimension = new Dimension(500, 500);
 
 private final int BTN_WIDTH = 420;
 static final int BTN_HEIGHT = 80;
@@ -20,11 +18,14 @@ static final int BTN_HEIGHT = 80;
 private Ball ball;
 static private final int BALL_DIAMETER = 20;
 
-JButton startGameBtn = new JButton();
-JButton scoreBoardBtn = new JButton();
-JButton exitBtn = new JButton();
-JButton creditsBtn = new JButton();
+private JButton startGameBtn = new JButton();
+private JButton scoreBoardBtn = new JButton();
+private JButton exitBtn = new JButton();
+private JButton creditsBtn = new JButton();
 
+    /**
+     * Konstruktor von der MenuPanel-Klasse
+     */
     public MenuPanel() {
 
     this.setFocusable(true);
@@ -95,6 +96,9 @@ JButton creditsBtn = new JButton();
 
 
     @Override
+    /**
+     * ActionListener-Methode
+     */
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == startGameBtn) {
             Frame frame = Frame.getInstance();

@@ -1,22 +1,23 @@
 package ch.lidl;
 
 // Dependencies
-import java.util.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
+/**
+ * Designpattern: Singleton
+ */
 public class Frame extends JFrame {
     
+    // Member Variablen
     public static Frame frame;
 
-    private GamePanel gamePanel;
-
+    /**
+     * Konstruktor der Frame-Klasse.
+     */
     private Frame() {
-        MenuPanel m = new MenuPanel();
-
         this.add(PanelContainer.getMenuPanelInstance());
-        
         this.setTitle("Pong");
         this.setResizable(false);
         this.setBackground(Color.BLACK);
@@ -25,6 +26,10 @@ public class Frame extends JFrame {
         this.setVisible(true);
     }
 
+    /**
+     * Gibt die INstanz der eignen Klasse zurück
+     * @return frame
+     */
     public static Frame getInstance() {
         if(frame == null) {
             frame = new Frame();
@@ -32,6 +37,9 @@ public class Frame extends JFrame {
         return frame;
     }
 
+    /**
+     * Methode, welche das Fenster/Frame schliesst
+     */
     public static void exit() {
         frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
     }

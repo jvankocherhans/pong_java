@@ -1,26 +1,29 @@
 package ch.lidl;
 
-import java.util.*;
-
-import javax.imageio.ImageIO;
+// Dependencies
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.awt.image.BufferedImage;
 
 public class RestartMenuPanel extends JPanel implements ActionListener {
 
-JButton retryBtn = new JButton();
-JButton returnBtn = new JButton();
+// Membervariablen
+private JButton retryBtn = new JButton();
+private JButton returnBtn = new JButton();
 
-JLabel gameOverText = new JLabel();
-JLabel scoreText = new JLabel();
+private JLabel gameOverText = new JLabel();
+private JLabel scoreText = new JLabel();
 
 private final int BTN_WIDTH = 420;
-static final int BTN_HEIGHT = 80;
+private final int BTN_HEIGHT = 80;
 
 private String playerName; 
 
+    /**
+     * Konstruktor der RestartMenuPanel-Klasse
+     * @param playerName
+     * @param playerScore
+     */
     public RestartMenuPanel (String playerName, int playerScore) {
 
     this.playerName = playerName;
@@ -74,6 +77,9 @@ private String playerName;
     }
 
 	@Override
+    /**
+     * Actionlistener Methode
+     */
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == retryBtn) {
             Frame frame = Frame.getInstance();

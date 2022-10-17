@@ -1,23 +1,20 @@
 package ch.lidl;
 
 // Dependencies
-import java.util.*;
 import javax.swing.*;
 
 import net.java.games.input.Controller;
 import net.java.games.input.ControllerEnvironment;
 
 import java.awt.*;
-import java.awt.event.*;
 
 import net.java.games.input.Component;
-import net.java.games.input.Controller;
-import net.java.games.input.ControllerEnvironment;
 import net.java.games.input.Event;
 import net.java.games.input.EventQueue;
 
 public class GamePanel extends JPanel implements Runnable {
 
+    // Member Variablen
     static private final int GAME_WIDTH = PanelContainer.PANEL_WIDTH;
     static private final int GAME_HEIGHT = PanelContainer.PANEL_HEIGHT;
     static private Dimension SCREEN_SIZE = PanelContainer.SCREEN_SIZE;
@@ -34,12 +31,15 @@ public class GamePanel extends JPanel implements Runnable {
     SaveScoreFile saveScoreFile;
     private String playerName;
 
-    // Controller mVars
     Thread controllerThread;
     Controller controller;
     EventQueue eventQueue;
     Event event;
 
+    /**
+     * Konstruktor der GamePanel-Klasse
+     * @param playerName
+     */
     public GamePanel(String playerName) {
         newPaddle();
         newBall();
@@ -57,15 +57,24 @@ public class GamePanel extends JPanel implements Runnable {
         gameThread.start();
     }
 
+    /**
+     * Methode erstellt einen neuen Ball
+     */
     public void newBall() {
         ball = new Ball((GAME_WIDTH / 2) - (BALL_DIAMETER / 2), (GAME_HEIGHT / 2) - (BALL_DIAMETER / 2), BALL_DIAMETER,
                 BALL_DIAMETER);
     }
 
+    /**
+     * Methode erstellt einen neuen Paddle/Spieler
+     */
     public void newPaddle() {
         paddle = new Paddle(10, (GAME_HEIGHT / 2) - (PADDLE_HEIGHT / 2), PADDLE_WIDTH, PADDLE_HEIGHT, 1);
     }
 
+    /**
+     * Methode ist für das Zeichnen der Grafiken zuständig
+     */
     public void paint(Graphics g) {
         img = createImage(getWidth(), getHeight());
         graphics = img.getGraphics();
@@ -73,6 +82,10 @@ public class GamePanel extends JPanel implements Runnable {
         g.drawImage(img, 0, 0, this);
     }
 
+    /**
+     * Draw Methoden werden bei den Klassen ausgeführt
+     * @param g
+     */
     public void draw(Graphics g) {
         this.paddle.draw(g);
         this.ball.draw(g);
@@ -80,11 +93,17 @@ public class GamePanel extends JPanel implements Runnable {
         Toolkit.getDefaultToolkit().sync();
     }
 
+    /**
+     * Move-Methode wird bei den Klassen ausgeführt
+     */
     public void move() {
         this.paddle.move();
         this.ball.move();
     }
 
+    /**
+     * Methode überprüft jegliche Art von Kollisionen
+     */
     public void checkCollisions() {
         // Playercollsions
         if (paddle.y <= 0) {
@@ -125,6 +144,12 @@ public class GamePanel extends JPanel implements Runnable {
         }
     }
 
+    /**
+     * Methode initialisiert den Controller, sofern dieser vorhanden ist.
+     * Gibt den Controller zurück.
+     * @param controllers
+     * @return controllers[i] || null
+     */
     private Controller getController(Controller[] controllers) {
         for (int i = 0; i < controllers.length; i++) {
             if (controllers[i].getType() == Controller.Type.STICK) {
@@ -134,6 +159,10 @@ public class GamePanel extends JPanel implements Runnable {
         return null;
     }
 
+    /**
+     * Methode wird stätig im eigenen Thread ausgeführt.
+     * Dabei werden Inputs überprüft und die Methoden ausgeführt. Jewils 120/s
+     */
     public void run() {
         long lastTime = System.nanoTime();
         double clockTime = 120.0;

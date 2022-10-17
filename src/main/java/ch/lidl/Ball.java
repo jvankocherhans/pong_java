@@ -2,17 +2,22 @@ package ch.lidl;
 
 // Dependencies
 import java.util.*;
-import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 
 public class Ball extends Rectangle{
 
     public int xVelocity;
     public int yVelocity;
-    Random rand;
+    private Random rand;
     private int speed = 1;
 
+    /**
+     * Konstruktor der Klasse Ball
+     * @param x
+     * @param y
+     * @param width
+     * @param height
+     */
     public Ball(int x, int y, int width, int height) {
         super(x, y, width, height);
         rand = new Random();
@@ -26,6 +31,9 @@ public class Ball extends Rectangle{
         }
     }
 
+    /**
+     * Methode ist für die Beschleunigung des Balls zuständig.
+     */
     public void increaseSpeed() {
         if(yVelocity < 0) {
             this.yVelocity--;
@@ -35,19 +43,34 @@ public class Ball extends Rectangle{
         this.xVelocity++;
     }
 
+    /**
+     * Aktualisiert die neue Y-Position des Balls 
+     * @param yDirection
+     */
     public void setYDirection(int yDirection) {
         this.yVelocity = yDirection;
     }
 
+    /**
+     * Aktualisiert die neue X-Position des Balls 
+     * @param xDirection
+     */
     public void setXDirection(int xDirection) {
         this.xVelocity = xDirection;
     }
 
+    /**
+     * Die Geschwindigkeit von den Kräften wird auf die X und Y Koordinate übertragen.
+     */
     public void move() {
         x += xVelocity;
         y += yVelocity;
     }
 
+    /**
+     * Die Grafik des Balls wird gezeichnet.
+     * @param g
+     */
     public void draw(Graphics g) {
         g.setColor(Color.WHITE);
         g.fillRect(x, y, width, height);

@@ -2,7 +2,6 @@ package ch.lidl;
 
 // Dependencies
 import java.util.*;
-import java.util.stream.Collectors;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,17 +9,19 @@ import java.awt.event.*;
 
 public class ScoreBoardPanel extends JPanel implements ActionListener {
 
-    SaveScoreFile saveScoreFile;
-
-    JButton returnBtn;
-
+    // Membervariablen
+    private SaveScoreFile saveScoreFile;
+    private JButton returnBtn;
     private final int BTN_WIDTH = 400;
-    static final int BTN_HEIGHT = 50;
+    private  final int BTN_HEIGHT = 50;
 
-    JLabel scoreBoardTitle;
-    JLabel firstRank, secondRank, thirdRank, fourthRank, fifthRank;
-    JLabel[] ranks = { firstRank, secondRank, thirdRank, fourthRank, fifthRank };
+    private JLabel scoreBoardTitle;
+    private JLabel firstRank, secondRank, thirdRank, fourthRank, fifthRank;
+    private JLabel[] ranks = { firstRank, secondRank, thirdRank, fourthRank, fifthRank };
 
+    /**
+     * Konstruktor der ScoreBoardPanel-Klasse
+     */
     public ScoreBoardPanel() {
         this.setFocusable(true);
 
@@ -107,6 +108,9 @@ public class ScoreBoardPanel extends JPanel implements ActionListener {
         this.repaint();
     }
 
+    /**
+     * Die Scores der Spieler werden ausgegeben und angezeigt, sofern mahr als 4 Spieler vorhanden sind.
+     */
     private void displayPlayerScore() {
         HashMap<String, Integer> scores = saveScoreFile.getFileData();
 
@@ -134,6 +138,9 @@ public class ScoreBoardPanel extends JPanel implements ActionListener {
     }
 
     @Override
+    /**
+     * Actionlistener Methode
+     */
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == returnBtn) {
             Frame frame = Frame.getInstance();

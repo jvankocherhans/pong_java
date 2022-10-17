@@ -1,25 +1,25 @@
 package ch.lidl;
 
 // Dependencies
-import java.util.*;
 import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.plaf.DimensionUIResource;
-
 import java.awt.*;
 import java.awt.event.*;
 
 
 public class CreditsPanel extends JPanel implements ActionListener {
 
-    JLabel reneInstaQR = new JLabel(new ImageIcon("reneInsta.png"));
-    JLabel jvanGitHubQR = new JLabel(new ImageIcon("s3rp3ntGitHub.png"));
+    // Membervariablen
+    private JLabel reneInstaQR = new JLabel(new ImageIcon("reneInsta.png"));
+    private JLabel jvanGitHubQR = new JLabel(new ImageIcon("s3rp3ntGitHub.png"));
 
-    JLabel reneInstaText = new JLabel("Instagram / René");
-    JLabel jvanGitHubText = new JLabel("GitHub / Jvan");
+    private JLabel reneInstaText = new JLabel("Instagram / René");
+    private JLabel jvanGitHubText = new JLabel("GitHub / Jvan");
 
-    JButton exitBtn = new JButton();
+    private JButton exitBtn = new JButton();
 
+    /**
+     * Konstruktor vom CreditsPanel
+     */
     public CreditsPanel() {
         this.setLayout(null);
         this.setFocusable(true);
@@ -56,6 +56,10 @@ public class CreditsPanel extends JPanel implements ActionListener {
     }
 
     @Override
+    /**
+     * Input-Methode von der Implementierung des ActionListeners.
+     * @param e
+     */
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == exitBtn) {
             Frame frame = Frame.getInstance();

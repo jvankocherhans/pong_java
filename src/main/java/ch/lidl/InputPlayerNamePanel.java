@@ -1,20 +1,21 @@
 package ch.lidl;
 
 // Dependencies
-import java.util.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
 public class InputPlayerNamePanel extends JPanel implements ActionListener {
 
-    JLabel inputNameInfo = new JLabel();
-    JLabel errorMessage = new JLabel();
+    // Member Vraiblen
+    private JLabel inputNameInfo = new JLabel();
+    private JLabel errorMessage = new JLabel();
+    private JButton exitBtn = new JButton();
+    private JTextField nameInput = new JTextField(20);
 
-    JButton exitBtn = new JButton();
-
-    JTextField nameInput = new JTextField(20);
-
+    /**
+     * Konstruktor von der InputPlayerNamePanel-Klasse
+     */
     public InputPlayerNamePanel() {
         this.setFocusable(true);
         this.setLayout(null);
@@ -64,6 +65,9 @@ public class InputPlayerNamePanel extends JPanel implements ActionListener {
         this.setVisible(true);
     }
 
+    /**
+     * Actionlistener Methode
+     */
     public void actionPerformed(ActionEvent e) {
 
         if(e.getSource() == exitBtn) {

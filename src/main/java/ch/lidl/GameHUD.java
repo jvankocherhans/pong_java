@@ -1,23 +1,32 @@
 package ch.lidl;
 
 // Dependencies
-import java.util.*;
-import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 
 public class GameHUD {
+
+    // Membervariablen
     private static int GAME_WIDTH;
     private static int GAME_HEIGHT;
     public int playerscore;
     private String playerName;
 
+    /**
+     * Konstruktor, der GameHud-Klasse
+     * @param GAME_WIDTH
+     * @param GAME_HEIGHT
+     * @param playerName
+     */
     public GameHUD(int GAME_WIDTH, int GAME_HEIGHT, String playerName) {
         this.GAME_WIDTH = GAME_WIDTH;
         this.GAME_HEIGHT = GAME_HEIGHT;
         this.playerName = playerName;
     }
 
+    /**
+     * Methode zeichnet die Grafiken des GameHuds
+     * @param g
+     */
     public void draw(Graphics g) {
         g.setColor(Color.CYAN);
         g.setFont(new Font("Consolas", Font.PLAIN, 25));
